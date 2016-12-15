@@ -21,15 +21,17 @@
 	    	$prepb->bindValue(':pseudo', $_POST['pseudo']);
 	    	$prepb->bindValue(':mdp', $_POST['pwd']);
 	    	$prepb->execute();
+
+	    	setcookie('pseudo', $sid, time() + 60*5, null, null, false, true);
+
+	    	header('Location: http://localhost/micro_blog/index.php'); 
 		}
 		else{
 			echo 'Utilisateur inconnu';
 		}
-
-
-	    //header('Location: http://localhost/micro_blog/index.php');  	
     }
 ?>
+
 <form method="post" action="connexion.php">
   	<div class="form-group">
     	<label for="exampleInputName2">Pseudo</label>

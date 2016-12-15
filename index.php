@@ -25,6 +25,13 @@
     }
 ?>
 
+
+<p>
+    <?php 
+        if($connecte==true){
+            echo $pseudo_user;
+    ?>
+</p>
 <div class="row">              
     <form method="post" <?php if(!isset($_GET['id'])) { ?> action="messages.php" <?php } ?>>
         <div class="col-sm-10">  
@@ -43,20 +50,24 @@
         </div>
         <div class="col-sm-2">
             <button type="submit" class="btn btn-success btn-lg">
-            <?php 
-                if(!isset($_GET['id']))
-                {
-                    echo 'Envoyer';
-                }
-                else if(isset($_GET['id']))
-                {
-                       echo 'Modifier';
-                } 
-            ?>
+                <?php
+                    if(!isset($_GET['id']))
+                    {
+                        echo 'Envoyer';
+                    }
+                    else if(isset($_GET['id']))
+                    {
+                           echo 'Modifier';
+                    } 
+                
+                ?>
             </button>
         </div>                        
     </form>
 </div>
+<?php 
+    } 
+?>
 
 <?php
     $selectAll = $pdo->query('SELECT * FROM messages');
@@ -76,9 +87,14 @@
         echo " Modifié le : ".date('H:i:s', $crea); 
     ?>
     </span>
-    <a href="index.php?idsupp=<?php echo $data['id']; ?>" class="bout"><button class="btn btn-danger btn-sm">Supprimer</button></a>
-    <a href="index.php?id=<?php echo $data['id']; ?>" class="bout"><button class="btn btn-warning btn-sm">Modifier</button></a>
-     
+    <?php
+        if($connecte==true){ ?>
+        <a href="index.php?idsupp=<?php echo $data['id']; ?>" class="bout"><button class="btn btn-danger btn-sm">Supprimer</button></a>
+        <a href="index.php?id=<?php echo $data['id']; ?>" class="bout"><button class="btn btn-warning btn-sm">Modifier</button></a>
+    
+    <?php 
+    }
+    ?>
 </blockquote>
 <?php
     }
