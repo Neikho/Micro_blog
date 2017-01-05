@@ -1,11 +1,9 @@
 <?php
     include('includes/connexion.inc.php');
     include('includes/haut.inc.php');
-?>
 
-<?php
     $current = time();
-    if(isset($_GET['id']) && isset($_POST['message']))
+    if(isset($_GET['id']) && isset($_POST['message']) && $connecte==true)
     {
         $queryupdate = $pdo->prepare("UPDATE messages SET contenu=(:contenuup), creation=(:modif) WHERE id=:amaj");
         $queryupdate->bindValue(':amaj', $_GET['id']);
@@ -14,10 +12,8 @@
         $queryupdate->execute();
         header('Location: http://localhost/micro_blog/index.php');
     }
-?>
 
-<?php
-    if(isset($_GET['idsupp']) && !empty($_GET['idsupp']))
+    if(isset($_GET['idsupp']) && !empty($_GET['idsupp']) && $connecte==true)
     {
         $querysupp = $pdo->prepare("DELETE FROM messages WHERE id=:asupp");
         $querysupp->bindValue(':asupp', $_GET['idsupp']);
