@@ -25,7 +25,7 @@
 <p>
     <?php 
         if($connecte==true){
-            echo $pseudo_user;
+            echo "Bienvenue ".$pseudo_user;
     ?>
 </p>
 <div class="row">              

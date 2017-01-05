@@ -4,7 +4,7 @@
 
 <?php
 	$current = time();
-	if (isset($_POST['message']) && !empty($_POST['message'])) 
+	if (isset($_POST['message']) && !empty($_POST['message']) && $connecte==true) 
 	{
 	    $query = 'INSERT INTO messages (contenu,creation) VALUES (:contenu,:crea)';
 	    $prep = $pdo->prepare($query);
