@@ -66,10 +66,29 @@
 ?>
 
 <?php
-    $selectAll = $pdo->query('SELECT * FROM messages');
+    $offset = $_GET['p']-1;
+    $message_par_page = 2;
+    $selectAllB = $pdo->query('SELECT * FROM messages');
+    $selectAll = $pdo->query('SELECT * FROM messages LIMIT 2 OFFSET '.$offset.'');
+    $selectAll->execute();
+    $nbMess = $selectAllB->rowCount();
+    $nb_page=ceil($nbMess/$message_par_page);
+
     while ($data = $selectAll->fetch()) 
     {
 ?>
+
+<?php
+    if(isset($_GET['p']))
+    {
+        echo "OUI C EST DEFINI";
+    }
+    else 
+    {
+        echo "NONNNONONONON";
+    }
+?>
+
 <blockquote>
     <input type="hidden" name="id" value="<?php $data['id'] ?>">
 	<?= $data['contenu'] ?>
@@ -95,5 +114,29 @@
 <?php
     }
 ?>
+
+
+<!-- PAGINATION !-->
+<div id="pagination">
+    <nav aria-label="Page navigation">
+      <ul class="pagination">
+        <li>
+          <a href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <?php
+            for($page=1; $page <= $nb_page; $page++)
+            { ?>
+                <li><a href="index.php?p=<?php echo $page ?>"><?php echo $page; ?></a></li>
+            <?php } ?>
+        <li>
+          <a href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+</div>
 
 <?php include('includes/bas.inc.php'); ?>
