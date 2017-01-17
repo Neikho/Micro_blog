@@ -76,7 +76,7 @@
     $offset = ($_GET['p']-1)*$message_par_page;
     
     $selectAllB = $pdo->query('SELECT * FROM messages');
-    $selectAll = $pdo->query('SELECT * FROM messages LIMIT 2 OFFSET '.$offset.'');
+    $selectAll = $pdo->query('SELECT mess.*, user.pseudo FROM messages mess INNER JOIN utilisateurs user ON mess.user_id = user.id LIMIT 2 OFFSET '.$offset.'');
     $selectAll->execute();
     $nbMess = $selectAllB->rowCount();
     $nb_page=ceil($nbMess/$message_par_page);
@@ -92,7 +92,7 @@
     <br/>
     <?php 
         $crea = $data['creation'];
-        echo "Crée le : ".date('d/m/Y', $crea); 
+        echo "Crée le : ".date('d/m/Y', $crea)." par ".$data['pseudo']; 
     ?> <br/>
     <?php 
         echo " Modifié le : ".date('H:i:s', $crea); 
@@ -118,7 +118,7 @@
       <ul class="pagination">
         <li>
           <a href="index.php?p=<?php 
-            if(($_GET['p']-1)==0)
+            if(($_GET['p']-1)<=0)
               {
                 echo $_GET['p'];
               }
