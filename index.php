@@ -76,7 +76,7 @@
     $offset = ($_GET['p']-1)*$message_par_page;
     
     $selectAllB = $pdo->query('SELECT * FROM messages');
-    $selectAll = $pdo->query('SELECT mess.*, user.pseudo FROM messages mess INNER JOIN utilisateurs user ON mess.user_id = user.id LIMIT 2 OFFSET '.$offset.'');
+    $selectAll = $pdo->query('SELECT mess.*, user.pseudo FROM messages mess INNER JOIN utilisateurs user ON mess.user_id = user.id LIMIT 2 OFFSET '.$offset.'');    
     $selectAll->execute();
     $nbMess = $selectAllB->rowCount();
     $nb_page=ceil($nbMess/$message_par_page);
@@ -154,5 +154,4 @@
       </ul>
     </nav>
 </div>
-
 <?php include('includes/bas.inc.php'); ?>

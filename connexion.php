@@ -32,10 +32,14 @@
     }
 ?>
 
-<form method="post" action="connexion.php">
+<div id="notif" class="hidden">
+    <p>Champs manquants</p>
+</div>
+
+<form method="post" action="connexion.php" id="connex">
   	<div class="form-group">
     	<label for="exampleInputName2">Pseudo</label>
-    	<input type="text" class="form-control" id="exampleInputName2" placeholder="Thanos" name="pseudo">
+    	<input type="text" class="form-control" id="login" placeholder="Thanos" name="pseudo">
   	</div>
 	<div class="form-group">
 		<label for="pwd">Password:</label>
@@ -43,4 +47,26 @@
 	</div>
 	<button type="submit" class="btn btn-default">Submit</button>
 </form>
+
 <?php include('includes/bas.inc.php'); ?>
+
+<script>
+$(function(){
+  	$('#connex').submit(function(){
+  		var contenulog = $('#login').val();
+  		var contenumdp = $('#pwd').val();
+  		if(contenulog == "" || contenumdp == "")
+  		{
+	  		$('#notif').removeClass("hidden");
+	  		$('#notif').addClass("alert alert-danger");
+	  		$('#notif').slideDown("slow");
+	  		//ajouter texte html erreur champs manquants
+	  		return false;
+  		}
+  		else
+  		{
+  			return true;
+  		}
+  	});
+});
+</script>
