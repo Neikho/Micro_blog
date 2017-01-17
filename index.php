@@ -2,6 +2,11 @@
     include('includes/connexion.inc.php');
     include('includes/haut.inc.php');
 
+    if(!isset($_GET['p']))
+    {
+        $_GET['p']=1;
+    }
+
     $current = time();
     if(isset($_GET['id']) && isset($_POST['message']) && $connecte==true)
     {
@@ -65,9 +70,11 @@
     } 
 ?>
 
+<!-- Affichage du nombre de message en fonction des paramètres de page !-->
 <?php
-    $offset = $_GET['p']-1;
     $message_par_page = 2;
+    $offset = ($_GET['p']-1)*$message_par_page;
+    
     $selectAllB = $pdo->query('SELECT * FROM messages');
     $selectAll = $pdo->query('SELECT * FROM messages LIMIT 2 OFFSET '.$offset.'');
     $selectAll->execute();
@@ -76,17 +83,6 @@
 
     while ($data = $selectAll->fetch()) 
     {
-?>
-
-<?php
-    if(isset($_GET['p']))
-    {
-        echo "OUI C EST DEFINI";
-    }
-    else 
-    {
-        echo "NONNNONONONON";
-    }
 ?>
 
 <blockquote>
@@ -116,22 +112,42 @@
 ?>
 
 
-<!-- PAGINATION !-->
+<!-- VISUEL PAGINATION !-->
 <div id="pagination">
     <nav aria-label="Page navigation">
       <ul class="pagination">
         <li>
-          <a href="#" aria-label="Previous">
+          <a href="index.php?p=<?php 
+            if(($_GET['p']-1)==0)
+              {
+                echo $_GET['p'];
+              }
+              else
+              {
+                echo $_GET['p']-1; 
+              }
+            ?>"
+          aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
           </a>
         </li>
         <?php
             for($page=1; $page <= $nb_page; $page++)
             { ?>
-                <li><a href="index.php?p=<?php echo $page ?>"><?php echo $page; ?></a></li>
+                <li><a href="index.php?p=<?php echo $page; ?>"><?php echo $page; ?></a></li>
             <?php } ?>
         <li>
-          <a href="#" aria-label="Next">
+          <a href="index.php?p=<?php 
+            if(($_GET['p']+1)>$nb_page)
+              {
+                echo $_GET['p'];
+              }
+              else
+              {
+                echo $_GET['p']+1; 
+              }
+            ?>"
+          aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
           </a>
         </li>
