@@ -50,6 +50,8 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+
+                    <!-- Barre de recheche !-->
                     <li id="barreRecherche">
                         <form method="post" action="recherche.php" id="submitForm">
                             <input type="text" class="form-control" name="recherche" id="rechercheInput" placeholder="Rechercher...">                      
@@ -60,22 +62,34 @@
                     </li>
                     <li class="hidden">
                         <a href="#page-top"></a>
-                    </li>             
-                    <?php
+                    </li>     
+
+                    <!-- Affichage d'un bouton en fonction de l'utilisateur connecté ou non !-->        
+                    <?php 
                         if($connecte==false)
-                        { ?>
-                            <li>
-                            <a href="inscription.php">Inscription</a>
-                            </li>
-                        <?php }
+                            { 
+                    ?>
+                                <li>
+                                    <a href="inscription.php">Inscription</a>
+                                </li>
+                    <?php 
+                            } 
                     ?>                      
                     <li class="page-scroll">
-                        <?php if($connecte==false){ ?>
-                            <a href="connexion.php">Connexion</a> 
-                        <?php }
-                        else { ?>
-                            <a href="deconnexion.php">Déconnexion</a> 
-                        <?php    } ?>
+                        <?php 
+                            if($connecte==false)
+                                { 
+                        ?>
+                                    <a href="connexion.php">Connexion</a> 
+                        <?php 
+                                }
+                            else
+                                { 
+                        ?>
+                                    <a href="deconnexion.php">Déconnexion</a> 
+                        <?php 
+                                } 
+                        ?>
                     </li> <br/>
                     
                 </ul>
@@ -97,31 +111,12 @@
                 </div>
             </div>
         </div>
+            <div id="notif" class="hidden">  
+            </div>
+
+
     </header>
 
     <!-- About Section -->
     <section>
         <div class="container">
-            <div id="notif" class="hidden">
-    
-            </div>
-
-<script>
-$(function(){
-    $('#submitForm').submit(function(){
-        var contenuRecherche = $('#rechercheInput').val();
-        if(contenuRecherche == "")
-        {
-            $('#notif').removeClass("hidden");
-            $('#notif').addClass("alert alert-danger");
-            $('#notif').slideDown("slow");
-            $('#notif').html('<p>Recheche vide!</p>');
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    });
-});
-</script>

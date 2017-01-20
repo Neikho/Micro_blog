@@ -12,16 +12,13 @@
 	    $count = $prep->rowCount();
 
 	    if($count >0){
-	    	echo 'BIENVENUE';
 	    	$sid = md5($_POST['pseudo'].time());
-	    	echo $sid;
 	    	$queryb = 'UPDATE utilisateurs SET SID = :sid WHERE pseudo = :pseudo AND mdp = :mdp';
 	    	$prepb = $pdo->prepare($queryb);
 	    	$prepb->bindValue(':sid', $sid);
 	    	$prepb->bindValue(':pseudo', $_POST['pseudo']);
 	    	$prepb->bindValue(':mdp', $_POST['pwd']);
 	    	$prepb->execute();
-
 	    	setcookie('pseudo', $sid, time() + 60*5, null, null, false, true);
 
 	    	header('Location: http://localhost/micro_blog/index.php'); 
@@ -69,5 +66,24 @@ $(function(){
   			return true;
   		}
   	});
+});
+
+// Script de vérification si la recherche n'est pas vide
+$(function(){
+    $('#submitForm').submit(function(){
+        var contenuRecherche = $('#rechercheInput').val();
+        if(contenuRecherche == "")
+        {
+            $('#notif').removeClass("hidden");
+            $('#notif').addClass("alert alert-danger");
+            $('#notif').slideDown("slow");
+            $('#notif').html('<p>Recherche vide!</p>');
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    });
 });
 </script>
