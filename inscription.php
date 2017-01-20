@@ -47,3 +47,27 @@ if(isset($_POST['inscripNom']) && isset($_POST['inscripPrenom']) && isset($_POST
 </form>
 
 <?php include('includes/bas.inc.php'); ?>
+
+<script>
+$(function(){
+    $('#inscrip').submit(function(){
+        var nom = $('#nom').val();
+        var prenom = $('#prenom').val();
+        var pseudo = $('#pseudo').val();
+        var mail = $('#mail').val();
+        var mdp = $('#passInsc').val();
+        if(nom == "" || prenom == "" || pseudo == "" || mail == "" || mdp == "")
+        {
+            $('#notif').removeClass("hidden");
+            $('#notif').addClass("alert alert-danger");
+            $('#notif').slideDown("slow");
+            $('#notif').html('<p>Champs manquants!</p>');
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    });
+});
+</script>

@@ -51,8 +51,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li id="barreRecherche">
-                        <form method="post" action="recherche.php">
-                            <input type="text" class="form-control" name="recherche" placeholder="Rechercher...">                      
+                        <form method="post" action="recherche.php" id="submitForm">
+                            <input type="text" class="form-control" name="recherche" id="rechercheInput" placeholder="Rechercher...">                      
                     </li>
                     <li id="boutonRecherche">
                         <button type="submit" class="btn btn-default">GO!</button>
@@ -102,3 +102,26 @@
     <!-- About Section -->
     <section>
         <div class="container">
+            <div id="notif" class="hidden">
+    
+            </div>
+
+<script>
+$(function(){
+    $('#submitForm').submit(function(){
+        var contenuRecherche = $('#rechercheInput').val();
+        if(contenuRecherche == "")
+        {
+            $('#notif').removeClass("hidden");
+            $('#notif').addClass("alert alert-danger");
+            $('#notif').slideDown("slow");
+            $('#notif').html('<p>Recheche vide!</p>');
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    });
+});
+</script>
