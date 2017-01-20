@@ -2,7 +2,9 @@
     include('includes/connexion.inc.php');
     include('includes/haut.inc.php');
 
-    if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['pwd']) && !empty($_POST['pwd'])){
+    // Fonction pour vérifier si l'utilisateur qui essaye de se connecter est en BDD 
+    if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['pwd']) && !empty($_POST['pwd']))
+    {
   	    $query = 'SELECT * FROM utilisateurs WHERE pseudo = :pseudo AND mdp = :mdp';
 	    $prep = $pdo->prepare($query);
 	    $prep->bindValue(':pseudo', $_POST['pseudo']);
@@ -11,7 +13,9 @@
 	    $res=$prep->fetch();
 	    $count = $prep->rowCount();
 
-	    if($count >0){
+	    // Si oui on lui affecte un cookie 
+	    if($count >0)
+	    {
 	    	$sid = md5($_POST['pseudo'].time());
 	    	$queryb = 'UPDATE utilisateurs SET SID = :sid WHERE pseudo = :pseudo AND mdp = :mdp';
 	    	$prepb = $pdo->prepare($queryb);
@@ -23,16 +27,19 @@
 
 	    	header('Location: http://localhost/micro_blog/index.php'); 
 		}
-		else{
+		else
+		{
 			echo 'Utilisateur inconnu';
 		}
     }
 ?>
 
+<!-- Div pour le message d'erreur !--> 
 <div id="notif" class="hidden">
     
 </div>
 
+<!-- Formulaire pour se connecter !--> 
 <form method="post" action="connexion.php" id="connex">
   	<div class="form-group">
     	<label for="exampleInputName2">Pseudo</label>

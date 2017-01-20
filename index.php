@@ -36,6 +36,7 @@
         // si user connecté alors il peut modifier supprimer et envoyer des messages
         if($connecte==true)
         {
+            echo "Bienvenue ".$pseudo_user;
     ?>
 </p>
 
@@ -77,7 +78,6 @@
 <?php 
         } 
 ?>
-
 <!-- Affichage du nombre de message en fonction des paramètres de page !-->
 <?php
     $message_par_page = 2;
@@ -123,7 +123,6 @@
 <?php
     }
 ?>
-
 
 <!-- VISUEL PAGINATION !-->
 <div id="pagination">
@@ -171,3 +170,44 @@
     </nav>
 </div>
 <?php include('includes/bas.inc.php'); ?>
+
+<script>
+// Script de vérification si la recherche n'est pas vide
+$(function(){
+    $('#submitForm').submit(function(){
+        var contenuRecherche = $('#rechercheInput').val();
+        if(contenuRecherche == "")
+        {
+            $('#notif').removeClass("hidden");
+            $('#notif').addClass("alert alert-danger");
+            $('#notif').slideDown("slow");
+            $('#notif').html('<p>Recherche vide!</p>');
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    });
+});
+</script>
+<script>
+// Script de vérification si la recherche n'est pas vide
+$(function(){
+    $('#submitForm').submit(function(){
+        var contenuRecherche = $('#rechercheInput').val();
+        if(contenuRecherche == "")
+        {
+            $('#notif').removeClass("hidden");
+            $('#notif').addClass("alert alert-danger");
+            $('#notif').slideDown("slow");
+            $('#notif').html('<p>Recherche vide!</p>');
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    });
+});
+</script>

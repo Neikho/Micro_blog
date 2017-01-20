@@ -2,7 +2,7 @@
     include('includes/connexion.inc.php');
     include('includes/haut.inc.php');
 
-// Insertion dans la BDD
+// Insertion d'un nouvel utilisateur dans la BDD
 if(isset($_POST['inscripNom']) && isset($_POST['inscripPrenom']) && isset($_POST['inscripPseudo']) && isset($_POST['inscripMail']) && isset($_POST['inscripPass']) && !empty($_POST['inscripNom']) && !empty($_POST['inscripPrenom']) && !empty($_POST['inscripPseudo']) && !empty($_POST['inscripMail']) && !empty($_POST['inscripPass']))
 {
 	$query = 'INSERT INTO utilisateurs (nom,prenom,email,mdp,pseudo,SID) VALUES (:nom,:prenom,:email,:mdp,:pseudo,:sid)';
@@ -14,6 +14,8 @@ if(isset($_POST['inscripNom']) && isset($_POST['inscripPrenom']) && isset($_POST
 	$insert->bindValue(':mdp', $_POST['inscripPass']);
 	$insert->bindValue(':sid', 5);
 	$insert->execute();
+    
+    echo "<div class='alert alert-success'><p>Inscription terminée avec succés!</p></div>";
 }
 
 ?>
@@ -48,6 +50,7 @@ if(isset($_POST['inscripNom']) && isset($_POST['inscripPrenom']) && isset($_POST
 
 <?php include('includes/bas.inc.php'); ?>
 
+<!-- Script pour vérifier si des champs du formulaire sont manquants !--> 
 <script>
 $(function(){
     $('#inscrip').submit(function(){
@@ -62,6 +65,27 @@ $(function(){
             $('#notif').addClass("alert alert-danger");
             $('#notif').slideDown("slow");
             $('#notif').html('<p>Champs manquants!</p>');
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    });
+});
+</script>
+
+<script>
+// Script de vérification si la recherche n'est pas vide
+$(function(){
+    $('#submitForm').submit(function(){
+        var contenuRecherche = $('#rechercheInput').val();
+        if(contenuRecherche == "")
+        {
+            $('#notif').removeClass("hidden");
+            $('#notif').addClass("alert alert-danger");
+            $('#notif').slideDown("slow");
+            $('#notif').html('<p>Recherche vide!</p>');
             return false;
         }
         else

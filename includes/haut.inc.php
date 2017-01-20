@@ -16,7 +16,7 @@
     <!-- Theme CSS -->
     <link href="css/freelancer.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <script src="jquery-3.1.1.js"></script>
+    <script src="js/jquery-3.1.1.js"></script>
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -111,8 +111,8 @@
                 </div>
             </div>
         </div>
-            <div id="notif" class="hidden">  
-            </div>
+        <div id="notif" class="hidden">  
+        </div>
 
 
     </header>
