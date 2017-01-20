@@ -50,7 +50,15 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
                         <a href="#page-top"></a>
-                    </li>
+                    </li>               
+                    <?php
+                        if($connecte==false)
+                        { ?>
+                            <li>
+                            <a href="inscription.php">Inscription</a>
+                            </li>
+                        <?php }
+                    ?>                      
                     <li class="page-scroll">
                         <?php if($connecte==false){ ?>
                             <a href="connexion.php">Connexion</a> 
@@ -58,6 +66,7 @@
                         else { ?>
                             <a href="deconnexion.php">Déconnexion</a> 
                         <?php    } ?>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

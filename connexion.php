@@ -33,7 +33,7 @@
 ?>
 
 <div id="notif" class="hidden">
-    <p>Champs manquants</p>
+    
 </div>
 
 <form method="post" action="connexion.php" id="connex">
@@ -50,6 +50,7 @@
 
 <?php include('includes/bas.inc.php'); ?>
 
+<!-- Script pour afficher un bandeau d'erreur !-->
 <script>
 $(function(){
   	$('#connex').submit(function(){
@@ -60,7 +61,7 @@ $(function(){
 	  		$('#notif').removeClass("hidden");
 	  		$('#notif').addClass("alert alert-danger");
 	  		$('#notif').slideDown("slow");
-	  		//ajouter texte html erreur champs manquants
+	  		$('#notif').html('<p>Champs manquants</p>');
 	  		return false;
   		}
   		else
