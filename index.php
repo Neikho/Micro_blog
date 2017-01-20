@@ -8,7 +8,7 @@
     }
 
     $current = time();
-    if(isset($_GET['id']) && isset($_POST['message']) && $connecte==true)
+    if(isset($_GET['id']) && isset($_POST['message']) && !empty($_POST['message']) && $connecte==true)
     {
         $queryupdate = $pdo->prepare("UPDATE messages SET contenu=(:contenuup), creation=(:modif) WHERE id=:amaj");
         $queryupdate->bindValue(':amaj', $_GET['id']);

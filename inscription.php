@@ -3,7 +3,7 @@
     include('includes/haut.inc.php');
 
 // Insertion dans la BDD
-if(isset($_POST['inscripNom']) && isset($_POST['inscripPrenom']) && isset($_POST['inscripPseudo']) && isset($_POST['inscripMail']) && isset($_POST['inscripPass']))
+if(isset($_POST['inscripNom']) && isset($_POST['inscripPrenom']) && isset($_POST['inscripPseudo']) && isset($_POST['inscripMail']) && isset($_POST['inscripPass']) && !empty($_POST['inscripNom']) && !empty($_POST['inscripPrenom']) && !empty($_POST['inscripPseudo']) && !empty($_POST['inscripMail']) && !empty($_POST['inscripPass']))
 {
 	$query = 'INSERT INTO utilisateurs (nom,prenom,email,mdp,pseudo,SID) VALUES (:nom,:prenom,:email,:mdp,:pseudo,:sid)';
 	$insert = $pdo->prepare($query);

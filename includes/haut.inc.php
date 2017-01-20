@@ -51,7 +51,12 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li id="barreRecherche">
-                        <input type="text" class="form-control" name="recherche" placeholder="Rechercher...">
+                        <form method="post" action="recherche.php">
+                            <input type="text" class="form-control" name="recherche" placeholder="Rechercher...">                      
+                    </li>
+                    <li id="boutonRecherche">
+                        <button type="submit" class="btn btn-default">GO!</button>
+                        </form>
                     </li>
                     <li class="hidden">
                         <a href="#page-top"></a>
