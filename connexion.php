@@ -29,7 +29,7 @@
 		}
 		else
 		{
-			echo 'Utilisateur inconnu';
+			echo "<div class='alert alert-danger'><p>Utilisateur non reconnu!</p></div>";
 		}
     }
 ?>
