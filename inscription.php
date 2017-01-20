@@ -13,11 +13,6 @@ if(isset($_POST['inscripNom']) && isset($_POST['inscripPrenom']) && isset($_POST
 	$insert->bindValue(':email', $_POST['inscripMail']);
 	$insert->bindValue(':mdp', $_POST['inscripPass']);
 	$insert->bindValue(':sid', 5);
-	var_dump($_POST['inscripNom']);
-	var_dump($_POST['inscripPrenom']);
-	var_dump($_POST['inscripPseudo']);
-	var_dump($_POST['inscripMail']);
-	var_dump($_POST['inscripPass']);
 	$insert->execute();
 }
 

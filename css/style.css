@@ -1,11 +1,18 @@
-.bout{
+.bout
+{
   	float: right;
   	margin-right: 10px;
 }
-.infostemps{
+.infostemps
+{
 	font-size: 10px;
 	margin-left: 10px;
 }
-#pagination{
+#pagination
+{
 	text-align: center;
+}
+#barreRecherche
+{
+	margin-top: 1.5%;
 }
