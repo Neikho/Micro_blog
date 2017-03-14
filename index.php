@@ -68,9 +68,31 @@ setlocale (LC_TIME, 'fr_FR','fra');
   $nbMess = $selectAllB->rowCount();
   $nb_page=ceil($nbMess/$message_par_page);
 
+
+  $regexMail = '/[a-z0-9_]+@[a-z0-9]+\.[a-z0-9]+/';
+  $regexTweet = '/#([a-z\d-]+)/';
+  $regexUrl = '/https?:\/\/[w{3}\.]*[a-z0-9_-]+\.[a-z]{2,3}.*/';
   $array = array();
+
   while($messInsert = $selectAll->fetch())
   {
+    if(preg_match_all($regexMail,$messInsert['contenu'],$out))
+    {
+      $messInsert = preg_replace($regexMail,'<a href="'.$out[0][0].'">'.$out[0][0].'</a>',$messInsert['contenu']);
+    }
+    else if(preg_match_all($regexTweet,$messInsert['contenu'],$out))
+    {
+      $messInsert = preg_replace($regexTweet,'<a href="recherche.php">'.$out[0][0].'</a>',$messInsert['contenu']);
+      //$out[1][0] #batman sans le #
+    }
+    else if(preg_match_all($regexUrl,$messInsert['contenu'],$out))
+    {
+      $messInsert = preg_replace($regexUrl,'<a href="'.$out[0][0].'">'.$out[0][0].'</a>',$messInsert['contenu']);
+    }
+    else
+    {
+      $messInsert = $messInsert['contenu'];
+    }
     array_push($array, $messInsert);
   }
   $oSmarty->assign('tabMessages', $array);

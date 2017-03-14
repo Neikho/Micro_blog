@@ -30,7 +30,7 @@
   {foreach from=$tabMessages item=liste }
     <!-- Affichage des infos et du message !-->
     <blockquote>
-      {$liste[1]} , message écrit par: {$liste[4]} le: {$liste[2]|date_format:"%A, %B %e, %Y"}
+      {$liste} , message écrit par: {$liste[4]} le: {$liste[2]|date_format:"%A, %B %e, %Y"}
       <!-- <span class="infostemps">
       <br/>
       <?php

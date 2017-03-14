@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-02-28 14:15:41
+/* Smarty version 3.1.30, created on 2017-03-14 18:16:31
   from "/var/www/html/micro_blog/templates/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58b577fd1d7e97_70560831',
+  'unifunc' => 'content_58c8256f4b02c9_69294493',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'cd0d64b53c332aac9a0b49398b27ca2c7b2c94c0' => 
     array (
       0 => '/var/www/html/micro_blog/templates/index.tpl',
-      1 => 1488287736,
+      1 => 1489511789,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58b577fd1d7e97_70560831 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58c8256f4b02c9_69294493 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once '/var/www/html/micro_blog/vendor/smarty/plugins/modifier.date_format.php';
 ?>
 <!-- si utilisateur est connecté -->
@@ -61,7 +61,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['liste']->value) {
 ?>
     <!-- Affichage des infos et du message !-->
     <blockquote>
-      <?php echo $_smarty_tpl->tpl_vars['liste']->value[1];?>
+      <?php echo $_smarty_tpl->tpl_vars['liste']->value;?>
  , message écrit par: <?php echo $_smarty_tpl->tpl_vars['liste']->value[4];?>
  le: <?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['liste']->value[2],"%A, %B %e, %Y");?>
 
