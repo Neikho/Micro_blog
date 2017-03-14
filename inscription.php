@@ -8,9 +8,6 @@
 	// Instancier notre objet smarty
 	$oSmarty = new Smarty();
 
-	// Affecter la valeur "Bonjour le monde" à la varaible SMARTY 'hello_world'
-	$oSmarty->assign('hello_world', 'Bonjour le monde');
-
 	// Provoque le rendu du template
 	$oSmarty->display('templates/inscription.tpl');
 
@@ -26,54 +23,6 @@
   	$insert->bindValue(':mdp', $_POST['inscripPass']);
   	$insert->bindValue(':sid', 5);
   	$insert->execute();
-
-    echo "<div class='alert alert-success'><p>Inscription terminée avec succés!</p></div>";
   }
   include('includes/bas.inc.php');
 ?>
-
-<!-- Script pour vérifier si des champs du formulaire sont manquants !-->
-<script>
-$(function(){
-    $('#inscrip').submit(function(){
-        var nom = $('#nom').val();
-        var prenom = $('#prenom').val();
-        var pseudo = $('#pseudo').val();
-        var mail = $('#mail').val();
-        var mdp = $('#passInsc').val();
-        if(nom == "" || prenom == "" || pseudo == "" || mail == "" || mdp == "")
-        {
-            $('#notif').removeClass("hidden");
-            $('#notif').addClass("alert alert-danger");
-            $('#notif').slideDown("slow");
-            $('#notif').html('<p>Champs manquants!</p>');
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    });
-});
-</script>
-
-<script>
-// Script de vérification si la recherche n'est pas vide
-$(function(){
-    $('#submitForm').submit(function(){
-        var contenuRecherche = $('#rechercheInput').val();
-        if(contenuRecherche == "")
-        {
-            $('#notif').removeClass("hidden");
-            $('#notif').addClass("alert alert-danger");
-            $('#notif').slideDown("slow");
-            $('#notif').html('<p>Recherche vide!</p>');
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    });
-});
-</script>

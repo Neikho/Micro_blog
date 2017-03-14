@@ -11,9 +11,6 @@
 	// Affecter la valeur "Bonjour le monde" à la varaible SMARTY 'hello_world'
 	$oSmarty->assign('hello_world', 'Bonjour le monde');
 
-	// Provoque le rendu du template
-	$oSmarty->display('templates/connexion.tpl');
-
   // Fonction pour vérifier si l'utilisateur qui essaye de se connecter est en BDD
   if(isset($_POST['pseudo']) && !empty($_POST['pseudo']) && isset($_POST['pwd']) && !empty($_POST['pwd']))
   {
@@ -41,49 +38,10 @@
 	}
 	else
 	{
-		echo "<div class='alert alert-danger'><p>Utilisateur non reconnu!</p></div>";
+		$oSmarty->assign('userInval', 'true');
 	}
   }
+  // Provoque le rendu du template
+	$oSmarty->display('templates/connexion.tpl');
   include('includes/bas.inc.php');
 ?>
-
-<!-- Script pour afficher un bandeau d'erreur !-->
-<script>
-$(function(){
-	$('#connex').submit(function(){
-		var contenulog = $('#login').val();
-		var contenumdp = $('#pwd').val();
-		if(contenulog == "" || contenumdp == "")
-		{
-  		$('#notif').removeClass("hidden");
-  		$('#notif').addClass("alert alert-danger");
-  		$('#notif').slideDown("slow");
-  		$('#notif').html('<p>Champs manquants</p>');
-  		return false;
-		}
-		else
-		{
-			return true;
-		}
-	});
-});
-
-// Script de vérification si la recherche n'est pas vide
-$(function(){
-  $('#submitForm').submit(function(){
-      var contenuRecherche = $('#rechercheInput').val();
-      if(contenuRecherche == "")
-      {
-          $('#notif').removeClass("hidden");
-          $('#notif').addClass("alert alert-danger");
-          $('#notif').slideDown("slow");
-          $('#notif').html('<p>Recherche vide!</p>');
-          return false;
-      }
-      else
-      {
-          return true;
-      }
-  });
-});
-</script>
