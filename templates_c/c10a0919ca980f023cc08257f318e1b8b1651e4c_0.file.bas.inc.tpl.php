@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-02-28 13:45:17
+/* Smarty version 3.1.30, created on 2017-03-29 16:29:13
   from "/var/www/html/micro_blog/templates/bas.inc.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58b570dd1a68c9_36820404',
+  'unifunc' => 'content_58dbc4b9d15d42_85700514',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c10a0919ca980f023cc08257f318e1b8b1651e4c' => 
     array (
       0 => '/var/www/html/micro_blog/templates/bas.inc.tpl',
-      1 => 1488285853,
+      1 => 1490797749,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58b570dd1a68c9_36820404 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58dbc4b9d15d42_85700514 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
         </div>
@@ -85,6 +85,10 @@ function content_58b570dd1a68c9_36820404 (Smarty_Internal_Template $_smarty_tpl)
  src="js/freelancer.min.js"><?php echo '</script'; ?>
 >
 
+    <!-- Script perso -->
+    <?php echo '<script'; ?>
+ src="js/script.js"><?php echo '</script'; ?>
+>
 </body>
 
 </html>

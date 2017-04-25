@@ -53,6 +53,8 @@
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
 
+    <!-- Script perso -->
+    <script src="js/script.js"></script>
 </body>
 
 </html>

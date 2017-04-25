@@ -25,12 +25,14 @@
       </form>
     </div>
   </p>
+  <p id="previsu"></p>
 {/if}
-{if isset($tabMessages) and !empty($tabMessages)}
-  {foreach from=$tabMessages item=liste }
-    <!-- Affichage des infos et du message !-->
+{$compteur = 0}
+{if isset($tabGlobal) and !empty($tabGlobal)}
+  {foreach from=$tabGlobal item=liste }
+        <!-- Affichage des infos et du message !-->
     <blockquote>
-      {$liste} , message écrit par: {$liste[4]} le: {$liste[2]|date_format:"%A, %B %e, %Y"}
+      {$tabGlobal[$compteur][1]} , message écrit par: {$tabGlobal[$compteur][2]} le: {$liste[2]|date_format:"%A, %B %e, %Y"}
       <!-- <span class="infostemps">
       <br/>
       <?php
@@ -45,10 +47,11 @@
 
       <!-- Si user connecte alors on afficher les boutons de suppression de modification !-->
       {if isset($userConnecte) and $userConnecte==1}
-          <a href="index.php?idsupp={$liste[0]}" class="bout"><button class="btn btn-danger btn-sm">Supprimer</button></a>
-          <a href="index.php?id={$liste[0]}" class="bout"><button class="btn btn-warning btn-sm">Modifier</button></a>
+          <a href="index.php?idsupp={$tabGlobal[$compteur][0]}" class="bout"><button class="btn btn-danger btn-sm">Supprimer</button></a>
+          <a href="index.php?id={$tabGlobal[$compteur][0]}" class="bout"><button class="btn btn-warning btn-sm">Modifier</button></a>
       {/if}
     </blockquote>
+    {$compteur = $compteur + 1}
   {/foreach}
 {else}
   Tableau vide
@@ -76,43 +79,3 @@
 </div>
 
 
-<script>
-// Script de vérification si la recherche n'est pas vide
-$(function(){
-  $('#submitForm').submit(function(){
-      var contenuRecherche = $('#rechercheInput').val();
-      if(contenuRecherche == "")
-      {
-          $('#notif').removeClass("hidden");
-          $('#notif').addClass("alert alert-danger");
-          $('#notif').slideDown("slow");
-          $('#notif').html('<p>Recherche vide!</p>');
-          return false;
-      }
-      else
-      {
-          return true;
-      }
-  });
-});
-</script>
-<script>
-// Script de vérification si la recherche n'est pas vide
-$(function(){
-  $('#submitForm').submit(function(){
-      var contenuRecherche = $('#rechercheInput').val();
-      if(contenuRecherche == "")
-      {
-          $('#notif').removeClass("hidden");
-          $('#notif').addClass("alert alert-danger");
-          $('#notif').slideDown("slow");
-          $('#notif').html('<p>Recherche vide!</p>');
-          return false;
-      }
-      else
-      {
-          return true;
-      }
-  });
-});
-</script>

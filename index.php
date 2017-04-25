@@ -69,20 +69,25 @@ setlocale (LC_TIME, 'fr_FR','fra');
   $nb_page=ceil($nbMess/$message_par_page);
 
 
+
+  // PARTIE EXPRESSIONS REGULIERES
   $regexMail = '/[a-z0-9_]+@[a-z0-9]+\.[a-z0-9]+/';
   $regexTweet = '/#([a-z\d-]+)/';
   $regexUrl = '/https?:\/\/[w{3}\.]*[a-z0-9_-]+\.[a-z]{2,3}.*/';
   $array = array();
 
+  $compteur=0;
   while($messInsert = $selectAll->fetch())
   {
+    $auteur = $messInsert['pseudo'];
+    $id = $messInsert['id'];
     if(preg_match_all($regexMail,$messInsert['contenu'],$out))
     {
-      $messInsert = preg_replace($regexMail,'<a href="'.$out[0][0].'">'.$out[0][0].'</a>',$messInsert['contenu']);
+      $messInsert = preg_replace($regexMail,'<a href="mailto:'.$out[0][0].'">'.$out[0][0].'</a>',$messInsert['contenu']);
     }
     else if(preg_match_all($regexTweet,$messInsert['contenu'],$out))
     {
-      $messInsert = preg_replace($regexTweet,'<a href="recherche.php">'.$out[0][0].'</a>',$messInsert['contenu']);
+      $messInsert = preg_replace($regexTweet,'<a href="recherche.php?seek='.$out[1][0].'">'.$out[0][0].'</a>',$messInsert['contenu']);
       //$out[1][0] #batman sans le #
     }
     else if(preg_match_all($regexUrl,$messInsert['contenu'],$out))
@@ -93,9 +98,16 @@ setlocale (LC_TIME, 'fr_FR','fra');
     {
       $messInsert = $messInsert['contenu'];
     }
-    array_push($array, $messInsert);
+
+    $array[$compteur][0] = $id;
+    $array[$compteur][1] = $messInsert;
+    $array[$compteur][2] = $auteur;
+    $compteur = $compteur + 1;
   }
-  $oSmarty->assign('tabMessages', $array);
+  $oSmarty->assign('tabGlobal', $array);
+
+
+
 
   if(($_GET['p']-1) <= 0)
   {

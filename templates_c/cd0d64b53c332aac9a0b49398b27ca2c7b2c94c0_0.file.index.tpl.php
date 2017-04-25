@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-14 18:16:31
+/* Smarty version 3.1.30, created on 2017-03-29 18:47:45
   from "/var/www/html/micro_blog/templates/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58c8256f4b02c9_69294493',
+  'unifunc' => 'content_58dbe53199e053_37891291',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'cd0d64b53c332aac9a0b49398b27ca2c7b2c94c0' => 
     array (
       0 => '/var/www/html/micro_blog/templates/index.tpl',
-      1 => 1489511789,
+      1 => 1490806059,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58c8256f4b02c9_69294493 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58dbe53199e053_37891291 (Smarty_Internal_Template $_smarty_tpl) {
 if (!is_callable('smarty_modifier_date_format')) require_once '/var/www/html/micro_blog/vendor/smarty/plugins/modifier.date_format.php';
 ?>
 <!-- si utilisateur est connecté -->
@@ -52,17 +52,19 @@ echo $_smarty_tpl->tpl_vars['tab']->value;
       </form>
     </div>
   </p>
+  <p id="previsu"></p>
 <?php }
-if (isset($_smarty_tpl->tpl_vars['tabMessages']->value) && !empty($_smarty_tpl->tpl_vars['tabMessages']->value)) {?>
+$_smarty_tpl->_assignInScope('compteur', 0);
+if (isset($_smarty_tpl->tpl_vars['tabGlobal']->value) && !empty($_smarty_tpl->tpl_vars['tabGlobal']->value)) {?>
   <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['tabMessages']->value, 'liste');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['tabGlobal']->value, 'liste');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['liste']->value) {
 ?>
-    <!-- Affichage des infos et du message !-->
+        <!-- Affichage des infos et du message !-->
     <blockquote>
-      <?php echo $_smarty_tpl->tpl_vars['liste']->value;?>
- , message écrit par: <?php echo $_smarty_tpl->tpl_vars['liste']->value[4];?>
+      <?php echo $_smarty_tpl->tpl_vars['tabGlobal']->value[$_smarty_tpl->tpl_vars['compteur']->value][1];?>
+ , message écrit par: <?php echo $_smarty_tpl->tpl_vars['tabGlobal']->value[$_smarty_tpl->tpl_vars['compteur']->value][2];?>
  le: <?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['liste']->value[2],"%A, %B %e, %Y");?>
 
       <!-- <span class="infostemps">
@@ -79,12 +81,14 @@ foreach ($_from as $_smarty_tpl->tpl_vars['liste']->value) {
 
       <!-- Si user connecte alors on afficher les boutons de suppression de modification !-->
       <?php if (isset($_smarty_tpl->tpl_vars['userConnecte']->value) && $_smarty_tpl->tpl_vars['userConnecte']->value == 1) {?>
-          <a href="index.php?idsupp=<?php echo $_smarty_tpl->tpl_vars['liste']->value[0];?>
+          <a href="index.php?idsupp=<?php echo $_smarty_tpl->tpl_vars['tabGlobal']->value[$_smarty_tpl->tpl_vars['compteur']->value][0];?>
 " class="bout"><button class="btn btn-danger btn-sm">Supprimer</button></a>
-          <a href="index.php?id=<?php echo $_smarty_tpl->tpl_vars['liste']->value[0];?>
+          <a href="index.php?id=<?php echo $_smarty_tpl->tpl_vars['tabGlobal']->value[$_smarty_tpl->tpl_vars['compteur']->value][0];?>
 " class="bout"><button class="btn btn-warning btn-sm">Modifier</button></a>
       <?php }?>
     </blockquote>
+    <?php $_smarty_tpl->_assignInScope('compteur', $_smarty_tpl->tpl_vars['compteur']->value+1);
+?>
   <?php
 }
 }
@@ -128,49 +132,5 @@ $_smarty_tpl->tpl_vars['page']->first = $_smarty_tpl->tpl_vars['page']->iteratio
 </div>
 
 
-<?php echo '<script'; ?>
->
-// Script de vérification si la recherche n'est pas vide
-$(function(){
-  $('#submitForm').submit(function(){
-      var contenuRecherche = $('#rechercheInput').val();
-      if(contenuRecherche == "")
-      {
-          $('#notif').removeClass("hidden");
-          $('#notif').addClass("alert alert-danger");
-          $('#notif').slideDown("slow");
-          $('#notif').html('<p>Recherche vide!</p>');
-          return false;
-      }
-      else
-      {
-          return true;
-      }
-  });
-});
-<?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
->
-// Script de vérification si la recherche n'est pas vide
-$(function(){
-  $('#submitForm').submit(function(){
-      var contenuRecherche = $('#rechercheInput').val();
-      if(contenuRecherche == "")
-      {
-          $('#notif').removeClass("hidden");
-          $('#notif').addClass("alert alert-danger");
-          $('#notif').slideDown("slow");
-          $('#notif').html('<p>Recherche vide!</p>');
-          return false;
-      }
-      else
-      {
-          return true;
-      }
-  });
-});
-<?php echo '</script'; ?>
->
 <?php }
 }
