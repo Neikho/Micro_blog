@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-03-29 16:29:13
+/* Smarty version 3.1.30, created on 2017-04-25 19:03:28
   from "/var/www/html/micro_blog/templates/bas.inc.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58dbc4b9d15d42_85700514',
+  'unifunc' => 'content_58ff81600baa10_48770339',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c10a0919ca980f023cc08257f318e1b8b1651e4c' => 
     array (
       0 => '/var/www/html/micro_blog/templates/bas.inc.tpl',
-      1 => 1490797749,
+      1 => 1493139701,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58dbc4b9d15d42_85700514 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58ff81600baa10_48770339 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
         </div>
@@ -38,7 +38,12 @@ function content_58dbc4b9d15d42_85700514 (Smarty_Internal_Template $_smarty_tpl)
                             <br>Beverly Hills, CA 90210</p>
                     </div>
                     <div class="footer-col col-md-4">
-                        
+                          <a class="icone facebook"></a>
+                          <a class="icone youtube"></a>
+                          <a class="icone tweeter"></a>
+                          <a class="icone google"></a>
+                          <a class="icone linkdln"></a>
+                          <a class="icone feu"></a>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>A propos</h3>

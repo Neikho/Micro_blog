@@ -14,7 +14,12 @@
                             <br>Beverly Hills, CA 90210</p>
                     </div>
                     <div class="footer-col col-md-4">
-                        
+                          <a class="icone facebook"></a>
+                          <a class="icone youtube"></a>
+                          <a class="icone tweeter"></a>
+                          <a class="icone google"></a>
+                          <a class="icone linkdln"></a>
+                          <a class="icone feu"></a>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>A propos</h3>

@@ -1,1 +1,20 @@
 .bout{float:right;margin-right:10px}.infostemps{font-size:10px;margin-left:10px}#pagination{text-align:center}#barreRecherche,#boutonRecherche{margin-top:1.5%}#previsu{display:none}
+.icone
+{
+	width: 48px;
+	height: 48px;
+	display: inline-block;
+	background-image: url("redes.png");
+}
+.facebook { background-position: -48px 0; }
+.facebook:hover{ background-position: -48px -48px; }
+.youtube { background-position: -96px 0; }
+.youtube:hover{ background-position: -96px -48px; }
+.google { background-position: -240px 0; }
+.google:hover{ background-position: -240px -48px; }
+.tweeter { background-position: -144px 0; }
+.tweeter:hover{ background-position: -144px -48px; }
+.feu { background-position: 0 0; }
+.feu:hover{ background-position: 0 -48px; }
+.linkdln { background-position: -192px 0; }
+.linkdln:hover{ background-position: -192px -48px; }
